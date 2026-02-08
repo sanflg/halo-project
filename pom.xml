@@ -15,6 +15,7 @@
     <selenium-version>4.40.0</selenium-version>
     <cucumber-version>7.34.2</cucumber-version>
     <log4j2-version>2.25.3</log4j2-version>
+    <lombok-version>1.18.42</lombok-version>
   </properties>
 
   <dependencies>
@@ -23,7 +24,6 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>${testeng-version}</version>
-      <scope>test</scope>
     </dependency>
 
     <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -61,6 +61,13 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j2-impl</artifactId>
       <version>${log4j2-version}</version>
+    </dependency>
+
+    <!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok-version}</version>
     </dependency>
   </dependencies>
 </project>
