@@ -40,3 +40,4 @@ build/
 /.idea/
 /.mvn/
 /.idea/
+/src/main/resources/logger.log
