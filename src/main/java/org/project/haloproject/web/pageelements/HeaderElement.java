@@ -9,7 +9,7 @@ import org.project.haloproject.web.pageobjects.SearchResultPage;
 
 @Getter
 public class HeaderElement extends BaseElement {
-    protected static final Logger LOGGER = LogManager.getLogger(HeaderElement.class);
+    private static final Logger LOGGER = LogManager.getLogger(HeaderElement.class);
 
     private final By searchInputElement = By.xpath("//header//*[@id='query_string']");
     private final By searchButtonElement = By.xpath("//header//*[@aria-label='Search Submit']");

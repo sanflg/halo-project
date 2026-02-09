@@ -45,8 +45,18 @@ public class DriverManager {
 
     public void quitAll() {
         Map<String, WebDriver> drivers = webDrivers.get();
+        if (drivers == null || drivers.isEmpty()) {
+            LOGGER.warn("quitAll called but no drivers found on thread {}", Thread.currentThread().getName());
+            return;
+        }
+        LOGGER.info("Closing {} driver(s) on thread {}", drivers.size(), Thread.currentThread().getName());
         for (WebDriver driver : drivers.values()) {
-            driver.quit();
+            try {
+                driver.quit();
+                LOGGER.info("Driver closed successfully");
+            } catch (Exception e) {
+                LOGGER.error("Failed to close driver", e);
+            }
         }
         drivers.clear();
         webDrivers.remove();
