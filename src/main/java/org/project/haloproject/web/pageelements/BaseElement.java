@@ -7,6 +7,7 @@ import org.project.haloproject.web.BasePageElement;
 
 import java.time.Duration;
 
+//This class seems unuseful right now but it can be used to extend the common capabilities of repeated elements in pages
 public class BaseElement extends BasePageElement {
 
     protected BaseElement(WebDriver driver) {

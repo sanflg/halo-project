@@ -1,9 +1,10 @@
-package org.project.haloproject.web;
+package org.project.haloproject.web.config;
 
 public final class Config {
-    private Config(){}
+    private Config() {
+    }
 
-    public static Browser browser(){
+    public static Browser browser() {
         return Browser.from(System.getProperty("browser", "chrome"));
     }
 
@@ -16,14 +17,14 @@ public final class Config {
     }
 
     public static int timeout() {
-        return  Integer.parseInt(System.getProperty("timeout", "20"));
+        return Integer.parseInt(System.getProperty("timeout", "20"));
     }
 
     public enum Browser {
         CHROME,
         FIREFOX;
 
-        public static Browser from(String value){
+        public static Browser from(String value) {
             return Browser.valueOf(value.toUpperCase());
         }
     }

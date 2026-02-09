@@ -1,24 +1,25 @@
 package org.project.haloproject.web.pageobjects;
 
 import lombok.Getter;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.project.haloproject.web.BasePageElement;
+import org.project.haloproject.web.config.EndpointManager;
 import org.project.haloproject.web.pageelements.HeaderElement;
 
-import java.time.Duration;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.time.Duration;
 
 @Getter
 public class BasePage<T extends BasePage<T>> extends BasePageElement {
+    protected static final String MAIN_PAGE = EndpointManager.getEndpoint().MtgGoldFishMain();
     private static final Logger LOGGER = LogManager.getLogger(BasePage.class);
-    protected static final String DOMAIN = "https://www.mtggoldfish.com/";
     protected URL url = null;
 
     private HeaderElement header;
