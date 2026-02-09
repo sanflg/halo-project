@@ -1,4 +1,4 @@
-Feature: Search Test
+Feature: Search bar works in lexical way Test
 
   @Regression
     @severity=critical

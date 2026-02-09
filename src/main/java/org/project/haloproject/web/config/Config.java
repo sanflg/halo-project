@@ -13,11 +13,11 @@ public final class Config {
     }
 
     public static boolean maximize() {
-        return Boolean.parseBoolean(System.getProperty("maximize", "false"));
+        return Boolean.parseBoolean(System.getProperty("maximize", "true"));
     }
 
     public static int timeout() {
-        return Integer.parseInt(System.getProperty("timeout", "20"));
+        return Integer.parseInt(System.getProperty("timeout", "5"));
     }
 
     public enum Browser {
