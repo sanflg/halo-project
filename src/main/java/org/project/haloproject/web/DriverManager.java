@@ -1,4 +1,4 @@
-package org.project.haloProject.web;
+package org.project.haloproject.web;
 
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;

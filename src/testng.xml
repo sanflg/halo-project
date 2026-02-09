@@ -3,7 +3,7 @@
 <suite name="halo-project" parallel="methods">
     <test name="Web">
         <classes>
-            <class name="org.project.haloProject.CucumberWebRunner">
+            <class name="org.project.haloproject.CucumberWebRunner">
             </class>
         </classes>
     </test>
