@@ -8,7 +8,7 @@
         </classes>
     </test>
 
-    <parameter name="maximize" value="false"/>
+    <parameter name="maximize" value="true"/>
     <parameter name="headless" value="false"/>
     <!-- Valid drivers right now: "chrome" and "firefox", SHOULD HAVE IT INSTALLED -->
     <parameter name="browser" value="chrome"/>

@@ -26,7 +26,7 @@
 
     <!-- running options -->
     <driver>chrome</driver>
-    <maximize>false</maximize>
+    <maximize>true</maximize>
     <headless>false</headless>
     <timeout>20</timeout>
     <threadCount>1</threadCount>

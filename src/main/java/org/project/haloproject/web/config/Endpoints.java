@@ -9,4 +9,10 @@ public interface Endpoints extends Config {
 
     @Key("mtggoldfish.search")
     String MtgGoldFishSearch();
+
+    @Key("mtggoldfish.decks")
+    String MtgGoldFishDecks();
+
+    @Key("mtggoldfish.deck")
+    String MtgGoldFishDeck();
 }

@@ -34,22 +34,10 @@ Run the full test suite via the TestNG XML: ```mvn test -Dbrowser=chrome -Ddatap
 |-------------------------------|------------------------------------------------------------------------------|-----------------------------|--------------|
 | ```browser```                 | browser to use in the execution (currently *chrome* and *firefox* supported) | ```chrome```, ```firefox``` | ```chrome``` |
 | ```dataproviderthreadcount``` | number of max threads supported for execution                                | ```1```, ```2```...         | ```1```      |
-| ```maximize```                | driver maximization for current window executed in the thread                | ```true```, ```false```     | ```false```  |
+| ```maximize```                | driver maximization for current window executed in the thread                | ```true```, ```false```     | ```true```   |
 | ```headless```                | used to control headless execution in order to avoid resources consumption   | ```true```, ```false```     | ```false```  |
 | ```timeout```                 | default timeout used for all drivers creation in seconds                     | ```1```, ```2```...         | ```20```     |
 
 ```mvn test -Dbrowser=chrome -Ddataproviderthreadcount=1 -Dmaximize=false -Dheadless=false -Dtimeout=20```
 
-Right now headless is more unstable but checking that would require further debugging and I don't have too much time jej
-
-## Project structure
-
-```
-src/
-  main/java/          - Page objects, driver manager, base classes
-  test/java/          - Cucumber runners, hooks, step definitions
-  test/resources/
-    features/web/     - Gherkin feature files
-  testng.xml          - TestNG suite configuration
-pom.xml               - Maven dependencies and build config
-```
+Right now headless is more unstable but checking that would require further debugging and I don't have too much time, same happens with no maximize since that would require another scenario validating a sandwich header menu dropdown.

@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.project.haloproject.web.config.EndpointManager;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
@@ -18,5 +20,17 @@ public class SearchResultPage extends BasePage<SearchResultPage> {
 
     public List<WebElement> getDecksTableElements() {
         return driver.findElements(decksTableElement);
+    }
+
+    public void validateDecksTableElements(String term) {
+        SoftAssert softAssert = new SoftAssert();
+
+        for (WebElement element : getDecksTableElements()) {
+            softAssert.assertTrue(
+                    element.getText().toLowerCase().contains(term),
+                    "Deck name does not contain term: " + element.getText());
+        }
+
+        softAssert.assertAll();
     }
 }
