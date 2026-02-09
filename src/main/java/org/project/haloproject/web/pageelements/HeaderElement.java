@@ -1,22 +1,27 @@
 package org.project.haloproject.web.pageelements;
 
+import lombok.Getter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.project.haloproject.web.pageobjects.SearchResultPage;
 
-public class HeaderElement {
-    protected final WebDriver driver;
+@Getter
+public class HeaderElement extends BaseElement {
+    protected static final Logger LOGGER = LogManager.getLogger(HeaderElement.class);
 
-    @FindBy (id = "query_string")
-    public WebElement searchInputElement;
-    @FindBy (className = "layout-navbar-search-btn")
-    public WebElement searchButtonElement;
-    @FindBy (className = "layout-header-banner-logo-img")
-    public WebElement logoImgElement;
+    private final By searchInputElement = By.xpath("//header//*[@id='query_string']");
+    private final By searchButtonElement = By.xpath("//header//*[@aria-label='Search Submit']");
+    private final By logoImgElement = By.className("layout-header-banner-logo-img");
 
     public HeaderElement(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
+    }
+
+    public SearchResultPage search(String text) {
+        getWebElement(searchInputElement).sendKeys(text);
+        getWebElement(searchButtonElement).click();
+        return new SearchResultPage(driver, text);
     }
 }

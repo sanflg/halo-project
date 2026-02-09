@@ -17,15 +17,8 @@ public class InitSD {
     @Given("init test")
     public void initTest() {
         homePage.goTo();
-        homePage.assertIsCurrentPage();
-        homePage.getHeader().searchInputElement.isEnabled();
-        homePage.getHeader().searchInputElement.sendKeys("Azorius");
-        homePage.getHeader().searchButtonElement.submit();
-        try {
-            wait(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        homePage.getHeader().search("Azorius");
+
         LOGGER.info("Init Test");
     }
 
