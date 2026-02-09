@@ -32,7 +32,7 @@ public class DriverManager {
         if (driver == null) {
             LOGGER.info("Get driver");
             driver = new ChromeDriver();
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(100));
             driver.manage().window().maximize();
             drivers.put(driverName, driver);
         }
@@ -45,9 +45,6 @@ public class DriverManager {
 
     public void quitAll() {
         Map<String, WebDriver> drivers = webDrivers.get();
-        if (drivers == null) {
-            return;
-        }
         for (WebDriver driver : drivers.values()) {
             driver.quit();
         }
