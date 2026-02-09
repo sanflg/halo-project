@@ -3,8 +3,12 @@ package org.project.haloproject.web;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -23,17 +27,24 @@ public class DriverManager {
 
     public WebDriver getDriver(String driverName) {
         Map<String, WebDriver> drivers = webDrivers.get();
+
         if (drivers == null) {
+            LOGGER.info("Started DriverManager on thread {}", Thread.currentThread().getName());
+
             drivers = new HashMap<>();
             webDrivers.set(drivers);
-            LOGGER.info("Started DriverManager on thread {}", Thread.currentThread().getName());
         }
         WebDriver driver = drivers.get(driverName);
+
         if (driver == null) {
-            LOGGER.info("Get driver");
-            driver = new ChromeDriver();
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(100));
-            driver.manage().window().maximize();
+            LOGGER.info("Started new driver on driver manager");
+
+            driver = initDriver();
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Config.timeout()));
+
+            if (Config.maximize()) {
+                driver.manage().window().maximize();
+            }
             drivers.put(driverName, driver);
         }
         return driver;
@@ -60,5 +71,35 @@ public class DriverManager {
         }
         drivers.clear();
         webDrivers.remove();
+    }
+
+    public WebDriver initDriver() {
+        LOGGER.info("Init driver of type: {}", Config.browser().name());
+
+        return switch (Config.browser()) {
+            case FIREFOX -> {
+                FirefoxOptions options = new FirefoxOptions();
+                configure(options);
+                yield new FirefoxDriver(options);
+            }
+
+            case CHROME -> {
+                ChromeOptions options = new ChromeOptions();
+                configure(options);
+                yield new ChromeDriver(options);
+            }
+        };
+    }
+
+    private void configure(MutableCapabilities options) {
+        if (Config.headless()) {
+            if (options instanceof ChromeOptions chrome) {
+                chrome.addArguments("--headless=new");
+            }
+
+            if (options instanceof FirefoxOptions firefox) {
+                firefox.addArguments("-headless");
+            }
+        }
     }
 }

@@ -1,9 +1,55 @@
 # Halo-project
 
-Project as homework to test the automation capabilities of the candidate
+Web UI test automation framework using Selenium, Cucumber, and TestNG.
 
-## Requirements
-1. Have JRE 21 
-2. Maven installed in the system path (3.9.8)
-3. Run `mvn clean install -D skipTests` to install dependencies on root folder
-4. 
+## Prerequisites
+
+### 1. Install JDK 21 https://jdk.java.net/archive/
+
+Verify the installation on console:```java -version```
+
+### 2. Install Maven 3.9+ https://maven.apache.org/install.html
+
+Verify the installation on console:```mvn -version```
+
+### 3. Google Chrome
+
+A recent version of Google Chrome must be installed. Selenium Manager will automatically download the matching ChromeDriver using dynamic fetching implemented in the latest versions.
+
+## Setup
+
+Clone the repository and install dependencies:
+
+```git clone https://github.com/sanflg/halo-project.git```
+
+```mvn clean install -DskipTests```
+
+## Running the tests with options
+
+Run the full test suite via the TestNG XML: ```mvn test -Dbrowser=chrome -Ddataproviderthreadcount=1```
+
+## Parameters
+
+| Name                          | Function                                                                     | Options                     | Default      |
+|-------------------------------|------------------------------------------------------------------------------|-----------------------------|--------------|
+| ```browser```                 | browser to use in the execution (currently *chrome* and *firefox* supported) | ```chrome```, ```firefox``` | ```chrome``` |
+| ```dataproviderthreadcount``` | number of max threads supported for execution                                | ```1```, ```2```...         | ```1```      |
+| ```maximize```                | driver maximization for current window executed in the thread                | ```true```, ```false```     | ```false```  |
+| ```headless```                | used to control headless execution in order to avoid resources consumption   | ```true```, ```false```     | ```false```  |
+| ```timeout```                 | default timeout used for all drivers creation in seconds                     | ```1```, ```2```...         | ```20```     |
+
+```mvn test -Dbrowser=chrome -Ddataproviderthreadcount=1 -Dmaximize=false -Dheadless=false -Dtimeout=20```
+
+Right now headless is more unstable but checking that would require further debugging and I don't have too much time jej
+
+## Project structure
+
+```
+src/
+  main/java/          - Page objects, driver manager, base classes
+  test/java/          - Cucumber runners, hooks, step definitions
+  test/resources/
+    features/web/     - Gherkin feature files
+  testng.xml          - TestNG suite configuration
+pom.xml               - Maven dependencies and build config
+```
