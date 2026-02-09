@@ -4,6 +4,15 @@ Feature: Deck view Test
   @severity=critical
   @issue=<TT-2>
   @Owner-Santiago_Lataza
-  Scenario: Deck view
+  Scenario Outline: Deck view
 
+    Given user goes to main page
+    When user goes to users submitted decks page
+    When user goes to deck number: <number>
+
+    Examples:
+      | number |
+      | 1      |
+      | 5      |
+      | 25     |
 
