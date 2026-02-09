@@ -11,7 +11,7 @@ import org.project.haloproject.web.pageobjects.HomePage;
 
 public class DeckViewSD {
     protected static final Logger LOGGER = LogManager.getLogger(DeckViewSD.class);
-    private HomePage homePage;
+    private final HomePage homePage;
     private DecksDisplayPage decksDisplayPage;
     private DeckPage deckPage;
 

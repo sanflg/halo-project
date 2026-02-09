@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = {"src/test/resources/features/web"},
         glue = {"org.project.haloproject"},
+        plugin = {"pretty",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
         tags = "@Regression"
 )
 public class CucumberWebRunner extends AbstractTestNGCucumberTests {

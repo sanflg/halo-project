@@ -1,5 +1,6 @@
 package org.project.haloproject.web.pageobjects;
 
+import io.qameta.allure.Step;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +18,7 @@ import java.net.URL;
 import java.time.Duration;
 
 @Getter
-public class BasePage<T extends BasePage<T>> extends BasePageElement {
+public class BasePage extends BasePageElement {
     protected static final String MAIN_PAGE = EndpointManager.getEndpoint().MtgGoldFishMain();
     private static final Logger LOGGER = LogManager.getLogger(BasePage.class);
     protected URL url = null;
@@ -34,14 +35,14 @@ public class BasePage<T extends BasePage<T>> extends BasePageElement {
         PageFactory.initElements(driver, this);
     }
 
-    @SuppressWarnings({"unchecked"})
-    public T goTo() {
+    @Step("Go to the desired page by url.")
+    public void goTo() {
         driver.get(url.toString());
 
         LOGGER.info("Loading: {}", driver.getCurrentUrl());
-        return (T) this;
     }
 
+    @Step("Get header element with lazy initialization.")
     public HeaderElement getHeader() {
         if (header == null) {
             this.header = new HeaderElement(driver);

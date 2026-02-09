@@ -23,6 +23,8 @@
     <lombok-version>1.18.42</lombok-version>
     <surefire-plugin-version>3.5.4</surefire-plugin-version>
     <aeonbits-version>1.0.12</aeonbits-version>
+    <allure-version>2.32.0</allure-version>
+    <allure-maven-version>2.17.0</allure-maven-version>
 
     <!-- running options -->
     <driver>chrome</driver>
@@ -90,6 +92,13 @@
       <artifactId>owner</artifactId>
       <version>${aeonbits-version}</version>
     </dependency>
+
+    <!-- Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber7-jvm</artifactId>
+      <version>${allure-version}</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -113,4 +122,17 @@
     </plugins>
   </build>
 
+  <reporting>
+    <plugins>
+      <plugin>
+        <!-- Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-maven -->
+          <groupId>io.qameta.allure</groupId>
+          <artifactId>allure-maven</artifactId>
+          <version>${allure-maven-version}</version>
+        <configuration>
+          <propertiesFilePath>test/resources/allure.properties</propertiesFilePath>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>

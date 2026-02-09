@@ -1,9 +1,9 @@
 Feature: Deck is submitted by user on submitted by user decks page
 
   @Regression
-  @severity=critical
-  @issue=<TT-2>
-  @Owner-Santiago_Lataza
+    @severity=critical
+    @issue=<TT-2>
+    @Owner-Santiago_Lataza
   Scenario Outline: Deck view
 
     Given user goes to main page
