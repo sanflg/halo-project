@@ -22,6 +22,9 @@ public class HeaderElement extends BaseElement {
     public SearchResultPage search(String text) {
         getWebElement(searchInputElement).sendKeys(text);
         getWebElement(searchButtonElement).click();
+
+        LOGGER.info("searching: {}", text);
+
         return new SearchResultPage(driver, text);
     }
 }

@@ -8,14 +8,27 @@
   <name>halo-project</name>
 
   <properties>
+    <!-- encoding -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- compiler version -->
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
 
+    <!-- libraries versions -->
     <testeng-version>7.12.0</testeng-version>
     <selenium-version>4.40.0</selenium-version>
     <cucumber-version>7.34.2</cucumber-version>
     <log4j2-version>2.25.3</log4j2-version>
     <lombok-version>1.18.42</lombok-version>
+    <surefire-plugin-version>3.5.4</surefire-plugin-version>
+
+    <!-- running options -->
+    <driver>chrome</driver>
+    <maximize>false</maximize>
+    <headless>false</headless>
+    <timeout>20</timeout>
+    <threadCount>1</threadCount>
   </properties>
 
   <dependencies>
@@ -70,4 +83,26 @@
       <version>${lombok-version}</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surefire-plugin-version}</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+          <properties>
+            <property>
+              <name>dataproviderthreadcount</name>
+              <value>${threadCount}</value>
+            </property>
+          </properties>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
