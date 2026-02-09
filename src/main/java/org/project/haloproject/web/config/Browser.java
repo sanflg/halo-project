@@ -1,4 +1,4 @@
-package org.project.haloproject.web;
+package org.project.haloproject.web.config;
 
 public enum Browser {
     CHROME,

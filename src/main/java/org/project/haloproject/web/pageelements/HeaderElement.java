@@ -11,8 +11,9 @@ import org.project.haloproject.web.pageobjects.SearchResultPage;
 public class HeaderElement extends BaseElement {
     private static final Logger LOGGER = LogManager.getLogger(HeaderElement.class);
 
-    private final By searchInputElement = By.xpath("//header//*[@id='query_string']");
-    private final By searchButtonElement = By.xpath("//header//*[@aria-label='Search Submit']");
+    //Seems silly to have xpath using id but some pages repeat the same id outside the header for search bars
+    private final By searchInputElement = By.xpath("//header//input");
+    private final By searchButtonElement = By.xpath("//header//button[@aria-label='Search Submit']");
     private final By logoImgElement = By.className("layout-header-banner-logo-img");
 
     public HeaderElement(WebDriver driver) {

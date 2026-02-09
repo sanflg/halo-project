@@ -11,12 +11,12 @@ import org.project.haloproject.web.pageobjects.HomePage;
 import org.project.haloproject.web.pageobjects.SearchResultPage;
 import org.testng.Assert;
 
-public class Search {
-    protected static final Logger LOGGER = LogManager.getLogger(Search.class);
-    private HomePage homePage;
+public class SearchSD {
+    protected static final Logger LOGGER = LogManager.getLogger(SearchSD.class);
+    private final HomePage homePage;
     private SearchResultPage searchResultPage;
 
-    public Search() {
+    public SearchSD() {
         this.homePage = new HomePage(DriverManager.getInstance().getDriver());
     }
 
