@@ -12,5 +12,5 @@
     <parameter name="headless" value="false"/>
     <!-- Valid drivers right now: "chrome" and "firefox", SHOULD HAVE IT INSTALLED -->
     <parameter name="browser" value="chrome"/>
-    <parameter name="timeout" value="20"/>
+    <parameter name="timeout" value="5"/>
 </suite>

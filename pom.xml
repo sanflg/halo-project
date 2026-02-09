@@ -28,8 +28,8 @@
     <driver>chrome</driver>
     <maximize>true</maximize>
     <headless>false</headless>
-    <timeout>20</timeout>
-    <threadCount>1</threadCount>
+    <timeout>5</timeout>
+    <threadCount>2</threadCount>
   </properties>
 
   <dependencies>

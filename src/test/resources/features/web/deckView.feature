@@ -1,4 +1,4 @@
-Feature: Deck view Test
+Feature: Deck is submitted by user on submitted by user decks page
 
   @Regression
   @severity=critical

@@ -33,10 +33,10 @@ Run the full test suite via the TestNG XML: ```mvn test -Dbrowser=chrome -Ddatap
 | Name                          | Function                                                                     | Options                     | Default      |
 |-------------------------------|------------------------------------------------------------------------------|-----------------------------|--------------|
 | ```browser```                 | browser to use in the execution (currently *chrome* and *firefox* supported) | ```chrome```, ```firefox``` | ```chrome``` |
-| ```dataproviderthreadcount``` | number of max threads supported for execution                                | ```1```, ```2```...         | ```1```      |
+| ```dataproviderthreadcount``` | number of max threads supported for execution                                | ```1```, ```2```...         | ```2```      |
 | ```maximize```                | driver maximization for current window executed in the thread                | ```true```, ```false```     | ```true```   |
 | ```headless```                | used to control headless execution in order to avoid resources consumption   | ```true```, ```false```     | ```false```  |
-| ```timeout```                 | default timeout used for all drivers creation in seconds                     | ```1```, ```2```...         | ```20```     |
+| ```timeout```                 | default timeout used for all drivers creation in seconds                     | ```1```, ```2```...         | ```5```      |
 
 ```mvn test -Dbrowser=chrome -Ddataproviderthreadcount=1 -Dmaximize=false -Dheadless=false -Dtimeout=20```
 
