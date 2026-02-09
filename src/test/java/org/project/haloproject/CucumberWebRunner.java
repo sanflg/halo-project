@@ -1,4 +1,4 @@
-package org.project.haloProject;
+package org.project.haloproject;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 @Test
 @CucumberOptions(
         features = {"src/test/resources/features/web"},
-        glue = {"org.project.haloProject.web"},
+        glue = {"org.project.haloproject.web"},
         tags = "@Regression"
 )
 public class CucumberWebRunner extends AbstractTestNGCucumberTests {

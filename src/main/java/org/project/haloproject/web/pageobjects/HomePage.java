@@ -1,4 +1,4 @@
-package org.project.haloProject.web.pageObjects;
+package org.project.haloproject.web.pageobjects;
 
 import org.openqa.selenium.WebDriver;
 
