@@ -12,9 +12,9 @@ Verify the installation on console:```java -version```
 
 Verify the installation on console:```mvn -version```
 
-### 3. Google Chrome
+### 3. Browser
 
-A recent version of Google Chrome must be installed. Selenium Manager will automatically download the matching ChromeDriver using dynamic fetching implemented in the latest versions.
+A recent version of Google Chrome or Firefox must be installed. Selenium Manager will automatically download the matching ChromeDriver or GeckoDriver using dynamic fetching implemented in the latest versions. Just check that you are executing with the run option of an installed browser.
 
 ## Setup
 
