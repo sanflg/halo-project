@@ -1,11 +1,12 @@
 package org.project.haloproject.web.pageobjects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.project.haloproject.web.config.EndpointManager;
 import org.testng.Assert;
 
-public class DeckPage extends BasePage<DeckPage>{
+public class DeckPage extends BasePage {
     protected static final String DECK_PAGE = EndpointManager.getEndpoint().MtgGoldFishDeck();
 
     private static final String DECK_SUBMITTED_BY_USER_TEXT = "User Submitted Deck";
@@ -20,6 +21,7 @@ public class DeckPage extends BasePage<DeckPage>{
         super(driver, MAIN_PAGE + DECK_PAGE);
     }
 
+    @Step("Validate that the deck we entered via deck submitted by user menu, is indeed submitted by user.")
     public void validateDeckSubmittedByUser() {
         Assert.assertTrue(getWebElement(DECK_INFO_ELEMENT).getText().contains(DECK_SUBMITTED_BY_USER_TEXT),
                 "User is not submitted by user, full info element: " + DECK_SUBMITTED_BY_USER_TEXT);

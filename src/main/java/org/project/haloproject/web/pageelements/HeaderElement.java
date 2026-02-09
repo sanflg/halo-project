@@ -1,5 +1,6 @@
 package org.project.haloproject.web.pageelements;
 
+import io.qameta.allure.Step;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,12 +23,50 @@ public class HeaderElement extends BaseElement {
         super(driver);
     }
 
+    @Step("Execute search in search bar with term: {0}.")
+    public SearchResultPage search(String text) {
+        getWebElement(SEARCH_INPUT_ELEMENT).sendKeys(text);
+        getWebElement(SEARCH_BUTTON_ELEMENT).click();
+
+        LOGGER.info("searching: {}", text);
+
+        return new SearchResultPage(driver, text);
+    }
+
+    @Step("Go to users submitted decks page.")
+    public DecksDisplayPage goToUserSubmittedDecksPage() {
+        clickSubOptionHeaderDropdown(HeaderDecksOption.USER_SUBMITTED);
+
+        LOGGER.info("Navigating to user submitted decks");
+
+        return new DecksDisplayPage(driver);
+    }
+
+    @Step("Dynamic click on header dropdown option.")
+    public void clickHeaderDropdown(HeaderDropdownOption item) {
+        String optionLocator = String.format(HEADER_OPTIONS_LOCATOR, item.getIndex());
+
+        LOGGER.info("Clicking header dropdown: {}", optionLocator);
+
+        getWebElement(By.xpath(optionLocator)).click();
+    }
+
+    @Step("Dynamic click on header dropdown sub option.")
+    public void clickSubOptionHeaderDropdown(HeaderDecksOption item) {
+        clickHeaderDropdown(item.getMaster());
+        String optionLocator = String.format(HEADER_SUB_OPTIONS_LOCATOR, item.getIndex());
+
+        LOGGER.info("Clicking header sup option dropdown: {}", optionLocator);
+
+        getWebElement(By.xpath(optionLocator)).click();
+    }
+
     @Getter
     public enum HeaderDropdownOption {
-        CARDS (1),
-        DECKS (2),
-        TOOLS (3),
-        LOGIN (4);
+        CARDS(1),
+        DECKS(2),
+        TOOLS(3),
+        LOGIN(4);
 
         private final int index;
 
@@ -38,14 +77,14 @@ public class HeaderElement extends BaseElement {
 
     @Getter
     public enum HeaderDecksOption {
-        POPULAR_DECKS   (1),
-        USER_SUBMITTED  (2),
-        CREATE          (3),
-        PRICE           (4),
-        SEARCH          (5),
-        TOURNAMENTS     (6),
-        SUPER_BREW      (7),
-        MY_DECKS        (8);
+        POPULAR_DECKS(1),
+        USER_SUBMITTED(2),
+        CREATE(3),
+        PRICE(4),
+        SEARCH(5),
+        TOURNAMENTS(6),
+        SUPER_BREW(7),
+        MY_DECKS(8);
 
         private final HeaderDropdownOption master;
         private final int index;
@@ -55,40 +94,4 @@ public class HeaderElement extends BaseElement {
             this.index = index;
         }
     }
-
-    public SearchResultPage search(String text) {
-        getWebElement(SEARCH_INPUT_ELEMENT).sendKeys(text);
-        getWebElement(SEARCH_BUTTON_ELEMENT).click();
-
-        LOGGER.info("searching: {}", text);
-
-        return new SearchResultPage(driver, text);
-    }
-
-    public DecksDisplayPage goToUserSubmittedDecksPage() {
-        clickSubOptionHeaderDropdown(HeaderDecksOption.USER_SUBMITTED);
-
-        LOGGER.info("Navigating to user submitted decks");
-
-        return new DecksDisplayPage(driver);
-    }
-
-    public void clickHeaderDropdown(HeaderDropdownOption item){
-        String optionLocator = String.format(HEADER_OPTIONS_LOCATOR, item.getIndex());
-
-        LOGGER.info("Clicking header dropdown: {}", optionLocator);
-
-        getWebElement(By.xpath(optionLocator)).click();
-    }
-
-    public void clickSubOptionHeaderDropdown(HeaderDecksOption item){
-        clickHeaderDropdown(item.getMaster());
-        String optionLocator = String.format(HEADER_SUB_OPTIONS_LOCATOR, item.getIndex());
-
-        LOGGER.info("Clicking header sup option dropdown: {}", optionLocator);
-
-        getWebElement(By.xpath(optionLocator)).click();
-    }
-
-
 }

@@ -10,7 +10,7 @@ import org.project.haloproject.web.pageobjects.SearchResultPage;
 
 public class SearchSD {
     protected static final Logger LOGGER = LogManager.getLogger(SearchSD.class);
-    private HomePage homePage;
+    private final HomePage homePage;
     private SearchResultPage searchResultPage;
 
     public SearchSD() {
